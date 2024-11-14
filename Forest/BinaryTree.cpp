@@ -43,19 +43,22 @@ void BinaryTree::insert(int val)
 	}
 }
 
-void BinaryTree::preOrderTraverse()
+string BinaryTree::inOrderTravers()
 {
-	preOrderRec(root);
+	return inOrderRec(root);
 }
 
-void BinaryTree::preOrderRec(Node* node)
+string BinaryTree::inOrderRec(Node* node)
 {
+	string res = "";
 	if (node)
 	{
-		cout << node->value << " ";
-		preOrderRec(node->left);
-		preOrderRec(node->right);
+		res += inOrderRec(node->left);
+		res += to_string(node->value);
+		res += " ";
+		res += inOrderRec(node->right);
 	}
+	return res;
 }
 
 Node* BinaryTree::parse(string s)
